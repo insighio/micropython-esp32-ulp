@@ -12,8 +12,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 3:
         if sys.argv[1] in ('-c', '--mcpu'):
             cpu = sys.argv[2].lower()
-            if cpu not in ('esp32', 'esp32s2'):
+            if cpu not in ('esp32', 'esp32s2', 'esp32s3'):
                 raise ValueError('Invalid cpu')
             filename = sys.argv[3]
     main(filename, cpu)
-

@@ -34,7 +34,7 @@ class SymbolTable:
 
     def has_sym(self, symbol):
         return symbol in self._symbols
-        
+
     def get_sym(self, symbol):
         entry = self._symbols[symbol]
         return entry
@@ -84,7 +84,6 @@ class SymbolTable:
         self._globals[symbol] = True
         pass
 
-
 class Assembler:
 
     def __init__(self, cpu='esp32', symbols=None, bases=None, globals=None):
@@ -92,6 +91,8 @@ class Assembler:
             opcode_module = 'opcodes'
         elif cpu == 'esp32s2':
             opcode_module = 'opcodes_s2'
+        elif cpu == 'esp32s3':
+            opcode_module = 'opcodes_s3'
         else:
             raise ValueError('Invalid cpu')
 
@@ -301,4 +302,3 @@ class Assembler:
         self.init(2)  # now we know all symbols and bases, do the real assembler pass, pass 2
         self.assembler_pass(lines)
         garbage_collect('after pass2')
-
